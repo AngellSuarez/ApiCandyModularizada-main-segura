@@ -39,7 +39,7 @@ class CitaVentaViewSet(viewsets.ModelViewSet):
         data = request.data.copy()
 
         # Forzar estado 'En proceso'
-        estado_en_proceso = EstadoCita.objects.get(Estado='En proceso')
+        estado_en_proceso = EstadoCita.objects.get(Estado='Pendiente')
         data['estado_id'] = estado_en_proceso.id
         
         serializer = self.get_serializer(data=data)
