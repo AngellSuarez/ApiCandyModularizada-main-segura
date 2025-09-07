@@ -13,6 +13,28 @@ from utils.permisos import TienePermisoModulo
 
 #@verificar_permiso('rol')
 class RolViewSet(viewsets.ModelViewSet):
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        old_estado = instance.estado
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        # Si el estado cambió, actualizar usuarios, manicuristas y clientes vinculados
+        new_estado = serializer.instance.estado
+        if 'estado' in request.data and old_estado != new_estado:
+            from usuario.models.usuario import Usuario
+            from usuario.models.manicurista import Manicurista
+            from usuario.models.cliente import Cliente
+            usuarios = Usuario.objects.filter(rol_id=instance.id)
+            usuarios.update(estado=new_estado)
+            # Actualizar manicuristas vinculados
+            manicuristas = Manicurista.objects.filter(usuario__in=usuarios)
+            manicuristas.update(estado=new_estado)
+            # Actualizar clientes vinculados
+            clientes = Cliente.objects.filter(usuario__in=usuarios)
+            clientes.update(estado=new_estado)
+        return Response(serializer.data)
     queryset = Rol.objects.all();
     serializer_class = RolSerializer;
     permission_classes = [TienePermisoModulo("Rol")];
@@ -50,19 +72,30 @@ class RolViewSet(viewsets.ModelViewSet):
     def cambiar_estado(self, request, pk=None):
         rol = self.get_object()
         nuevo_estado = "Activo" if rol.estado == "Inactivo" else "Inactivo"
-
-        # Actualiza el rol
         rol.estado = nuevo_estado
         rol.save()
-
-        # Actualiza el estado de todos los usuarios con ese rol
-        Usuario.objects.filter(rol_id=rol.id).update(estado=nuevo_estado)
-
+        
+    #encontrar usuarios activos
+        usuarios = Usuario.objects.filter(rol_id=rol.id)
+        usuarios.update(estado=nuevo_estado)
+        for usuario in usuarios:
+            # Si el usuario tiene un manicurista asociado, desactívalo
+            if hasattr(usuario, 'manicurista'):
+                manicurista = usuario.manicurista
+                if manicurista:
+                    manicurista.estado = nuevo_estado
+                    manicurista.save()
+            # Si el usuario tiene un cliente asociado, desactívalo
+            if hasattr(usuario, 'cliente'):
+                cliente = usuario.cliente
+                if cliente:
+                    cliente.estado = nuevo_estado
+                    cliente.save()
         serializer = self.get_serializer(rol)
         return Response({
             "message": f"El estado del rol cambió a {nuevo_estado} correctamente",
             "data": serializer.data
-        })
+    })
     
     #cambiar el eliminar (destroy en django para inactivo)
     def destroy(self, request, *args, **kwargs):
