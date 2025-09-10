@@ -31,13 +31,20 @@ class LoginView(TokenObtainPairView):
         # Buscar por correo
         try:
             user = Usuario.objects.get(correo=login_input)
-            data['username'] = user.username  # Sobrescribimos username
         except Usuario.DoesNotExist:
             return Response(
                 {"detail": "Correo no encontrado"},
                 status=status.HTTP_401_UNAUTHORIZED
             )
 
+        # Validar que el usuario esté activo
+        if user.estado != "Activo":
+            return Response(
+                {"detail": "Usuario inactivo. No puede iniciar sesión."},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        data['username'] = user.username  # Sobrescribimos username
         request._full_data = data  # Forzar el nuevo data en la request
 
         # Ejecutar el login original con el nuevo data
