@@ -60,7 +60,7 @@ def enviar_correo_registro(destinatario, nombre_usuario):
             En CandyNails estamos felices de tenerte aquí. Agenda tus citas fácilmente y descubre nuestros servicios.
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="https://prototipo-candysoft.onrender.com/" style="background-color:#117a8b; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">💅 Explora CandyNails</a>
+            <a href="https://prototipo-candysoft.onrender.com/" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">💅 Explora CandyNails</a>
         </div>
     </div>
     """
@@ -99,7 +99,7 @@ def enviar_correo_cambio_password(destinatario, nombre_usuario):
             Si no fuiste tú quien realizó este cambio, por favor contacta con el soporte inmediatamente.
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="https://prototipo-candysoft.onrender.com/login" style="background-color:#117a8b; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Ir a CandyNails</a>
+            <a href="https://prototipo-candysoft.onrender.com/login" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Ir a CandyNails</a>
         </div>
     </div>
     """
