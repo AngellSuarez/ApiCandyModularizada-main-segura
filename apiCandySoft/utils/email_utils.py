@@ -8,7 +8,7 @@ def enviar_correo_recuperacion(destinatario, asunto, codigo):
     mensaje_texto = f'Tu código de recuperación es: {codigo}'
 
     mensaje_html = f"""
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #ddd;">
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #fff3f8; border-radius: 10px; border: 1px solid #f8c6e0;">
         <div style="text-align: center;">
             <img src="https://i.pinimg.com/736x/ab/dd/f1/abddf13749e496af6b9bfc5f5bec55e4.jpg" alt="Recuperación de contraseña" style="max-width: 150px; margin-bottom: 20px;" />
         </div>
@@ -23,9 +23,6 @@ def enviar_correo_recuperacion(destinatario, asunto, codigo):
         <p style="font-size: 14px; color: #777; text-align: center;">
             Este código expirará en 10 minutos. Si no solicitaste este código, puedes ignorar este correo.
         </p>
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="#" style="background-color:rgb(65, 41, 65); color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🌐 Ir a Mi App</a>
-        </div>
     </div>
     """
 
@@ -63,7 +60,7 @@ def enviar_correo_registro(destinatario, nombre_usuario):
             En CandyNails estamos felices de tenerte aquí. Agenda tus citas fácilmente y descubre nuestros servicios.
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="#" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">💅 Explora CandyNails</a>
+            <a href="https://prototipo-candysoft.onrender.com/" style="background-color:#117a8b; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">💅 Explora CandyNails</a>
         </div>
     </div>
     """
@@ -102,7 +99,7 @@ def enviar_correo_cambio_password(destinatario, nombre_usuario):
             Si no fuiste tú quien realizó este cambio, por favor contacta con el soporte inmediatamente.
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="#" style="background-color:#117a8b; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Ir a CandyNails</a>
+            <a href="https://prototipo-candysoft.onrender.com/login" style="background-color:#117a8b; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Ir a CandyNails</a>
         </div>
     </div>
     """
@@ -176,7 +173,7 @@ def enviar_correo_confirmacion(destinatario, nombre_cliente, fecha, hora, servic
             Si deseas reprogramar o cancelar tu cita, comunícate con nosotros con anticipación.
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="#" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">💅 Ir a CandyNails</a>
+            <a href="https://prototipo-candysoft.onrender.com/" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">💅 Ir a CandyNails</a>
         </div>
     </div>
     """
@@ -206,7 +203,7 @@ def enviar_correo_bienvenida_manicurista(destinatario, nombre_empleada, contrase
     Tu contraseña temporal es: {contrasena}
 
     Por seguridad, cambia tu contraseña usando el siguiente enlace:
-    {enlace_cambio_password}
+    https://prototipo-candysoft.onrender.com/requerir-codigo
     """
 
     mensaje_html = f"""
@@ -228,7 +225,7 @@ def enviar_correo_bienvenida_manicurista(destinatario, nombre_empleada, contrase
             Por tu seguridad, cambia tu contraseña cuanto antes usando el siguiente botón:
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="{enlace_cambio_password}" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Cambiar Contraseña</a>
+            <a href="https://prototipo-candysoft.onrender.com/requerir-codigo" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Cambiar Contraseña</a>
         </div>
         <p style="font-size: 15px; color: #777; text-align: center; margin-top: 20px;">
             ¡Gracias por formar parte de nuestro equipo! 💖
@@ -261,7 +258,7 @@ def enviar_correo_bienvenida_cliente(destinatario, nombre_cliente, contrasena, e
     Tu contraseña temporal es: {contrasena}
 
     Por seguridad, cambia tu contraseña usando el siguiente enlace:
-    {enlace_cambio_password}
+    https://prototipo-candysoft.onrender.com/requerir-codigo
     """
 
     mensaje_html = f"""
@@ -283,7 +280,7 @@ def enviar_correo_bienvenida_cliente(destinatario, nombre_cliente, contrasena, e
             Por tu seguridad, cambia tu contraseña cuanto antes usando el siguiente botón:
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="{enlace_cambio_password}" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Cambiar Contraseña</a>
+            <a href="https://prototipo-candysoft.onrender.com/requerir-codigo" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Cambiar Contraseña</a>
         </div>
         <p style="font-size: 15px; color: #777; text-align: center; margin-top: 20px;">
             ¡En CandyNails estamos felices de tenerte aquí. Agenda tus citas fácilmente y descubre nuestros servicios! 💖
@@ -339,7 +336,7 @@ def enviar_correo_liquidacion_realizada(destinatario, nombre_empleada, fecha_ini
             Puedes revisar los detalles desde tu <strong>dashboard personal</strong>.
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="http://localhost:5173/" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">📋 Ir a mi Dashboard</a>
+            <a href="https://prototipo-candysoft.onrender.com/" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">📋 Ir a mi Dashboard</a>
         </div>
         <p style="font-size: 15px; color: #777; text-align: center; margin-top: 20px;">
             ¡Gracias por seguir haciendo un trabajo increíble! 💖
@@ -373,7 +370,7 @@ def enviar_correo_bienvenida_empleado(destinatario, nombre_empleado, contrasena,
     Tu contraseña temporal es: {contrasena}
 
     Por seguridad, cambia tu contraseña usando el siguiente enlace:
-    {enlace_cambio_password}
+    https://prototipo-candysoft.onrender.com/requerir-codigo
     """
 
     mensaje_html = f"""
@@ -395,7 +392,7 @@ def enviar_correo_bienvenida_empleado(destinatario, nombre_empleado, contrasena,
             Por tu seguridad, cambia tu contraseña cuanto antes usando el siguiente botón:
         </p>
         <div style="text-align: center; margin-top: 20px;">
-            <a href="{enlace_cambio_password}" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Cambiar Contraseña</a>
+            <a href="https://prototipo-candysoft.onrender.com/requerir-codigo" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">🔐 Cambiar Contraseña</a>
         </div>
         <p style="font-size: 15px; color: #777; text-align: center; margin-top: 20px;">
             ¡Gracias por formar parte de nuestro equipo! 💖
