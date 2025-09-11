@@ -339,7 +339,7 @@ def enviar_correo_liquidacion_realizada(destinatario, nombre_empleada, fecha_ini
             <a href="https://prototipo-candysoft.onrender.com/" style="background-color:#d63384; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px;">📋 Ir a mi Dashboard</a>
         </div>
         <p style="font-size: 15px; color: #777; text-align: center; margin-top: 20px;">
-            ¡Gracias por seguir haciendo un trabajo increíble! 💖
+            💅 ¡Gracias por seguir haciendo un trabajo increíble! 💖
         </p>
     </div>
     """
